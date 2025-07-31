@@ -1,68 +1,77 @@
 #include <stdio.h>
 
-int main() {
-    float num1, num2, resultado;
-    int operacao;
+// Funções para operações matemáticas
+float somar(float a, float b) {
+    return a + b;
+}
 
-    while (1) {
-        // Exibir o menu de opções
-        printf("Escolha uma operação:\n");
+float subtrair(float a, float b) {
+    return a - b;
+}
+
+float multiplicar(float a, float b) {
+    return a * b;
+}
+
+float dividir(float a, float b) {
+    if (b == 0) {
+        printf("Erro: Divisão por zero!\n");
+        return 0; // Retorna 0 como valor de erro
+    }
+    return a / b;
+}
+
+int main() {
+    int opcao;
+    float num1, num2, resultado;
+
+    // Menu principal
+    do {
+        printf("Calculadora Simples\n");
+        printf("Escolha a operação:\n");
         printf("1. Soma\n");
         printf("2. Subtração\n");
         printf("3. Multiplicação\n");
         printf("4. Divisão\n");
         printf("5. Sair\n");
-        printf("Digite o número da operação (1-5): ");
-        scanf("%d", &operacao);
+        printf("Digite sua opção: ");
+        scanf("%d", &opcao);
 
-        // Se o usuário escolher 5, o programa sai
-        if (operacao == 5) {
-            printf("Saindo... Obrigado por usar a calculadora!\n");
-            break;
+        if (opcao == 5) {
+            printf("Saindo da calculadora...\n");
+            break; // Sai do loop e encerra o programa
         }
 
-        // Receber os números
+        // Solicita os números
         printf("Digite o primeiro número: ");
         scanf("%f", &num1);
         printf("Digite o segundo número: ");
         scanf("%f", &num2);
 
-        // Realizar a operação escolhida
-        switch (operacao) {
-            case 1: // Soma
-                resultado = num1 + num2;
-                printf("Resultado: %.2f + %.2f = %.2f\n", num1, num2, resultado);
+        // Realiza a operação com base na opção do usuário
+        switch (opcao) {
+            case 1:
+                resultado = somar(num1, num2);
+                printf("Resultado: %.2f\n", resultado);
                 break;
-            case 2: // Subtração
-                resultado = num1 - num2;
-                printf("Resultado: %.2f - %.2f = %.2f\n", num1, num2, resultado);
+            case 2:
+                resultado = subtrair(num1, num2);
+                printf("Resultado: %.2f\n", resultado);
                 break;
-            case 3: // Multiplicação
-                resultado = num1 * num2;
-                printf("Resultado: %.2f * %.2f = %.2f\n", num1, num2, resultado);
+            case 3:
+                resultado = multiplicar(num1, num2);
+                printf("Resultado: %.2f\n", resultado);
                 break;
-            case 4: // Divisão
-                // Verificar se o divisor é zero
-                if (num2 == 0) {
-                    printf("Erro: Divisão por zero não é permitida!\n");
-                } else {
-                    resultado = num1 / num2;
-                    printf("Resultado: %.2f / %.2f = %.2f\n", num1, num2, resultado);
+            case 4:
+                resultado = dividir(num1, num2);
+                if (num2 != 0) {
+                    printf("Resultado: %.2f\n", resultado);
                 }
                 break;
             default:
-                printf("Operação inválida. Tente novamente.\n");
+                printf("Opção inválida. Tente novamente.\n");
         }
-
-        // Opção para continuar ou sair
-        printf("\nDeseja realizar outra operação? (1 - Sim / 0 - Não): ");
-        int continuar;
-        scanf("%d", &continuar);
-        if (continuar == 0) {
-            printf("Saindo... Obrigado por usar a calculadora!\n");
-            break;
-        }
-    }
+    } while (opcao != 5);
 
     return 0;
 }

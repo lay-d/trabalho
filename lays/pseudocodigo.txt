@@ -1,0 +1,41 @@
+Início
+    Enquanto verdadeiro
+        Exibir menu de operações:
+            1. Soma
+            2. Subtração
+            3. Multiplicação
+            4. Divisão
+            5. Sair
+        Ler a opção do usuário
+        
+        Se opção for 5
+            Exibir "Saindo da calculadora..."
+            Parar o programa
+        
+        Ler o primeiro número (num1)
+        Ler o segundo número (num2)
+        
+        Se opção for 1
+            Calcular resultado = num1 + num2
+            Exibir resultado
+        
+        Se opção for 2
+            Calcular resultado = num1 - num2
+            Exibir resultado
+        
+        Se opção for 3
+            Calcular resultado = num1 * num2
+            Exibir resultado
+        
+        Se opção for 4
+            Se num2 for 0
+                Exibir "Erro: Divisão por zero!"
+            Caso contrário
+                Calcular resultado = num1 / num2
+                Exibir resultado
+        
+        Se a opção for inválida
+            Exibir "Opção inválida. Tente novamente."
+    
+    Fim
+Fim
